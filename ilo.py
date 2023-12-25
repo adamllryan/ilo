@@ -39,14 +39,14 @@ def power(want_status):
     for second in range(1, TIMEOUT):
         # check if status is met
 
-        if ilo.get_host_power_saver_status() == want_status:
+        if ilo.get_host_power_status() == want_status:
             print("Computer has powered {}.".format(want_status.lower()))
             logging.info(want_status)
             sys.exit(0)
 
         # Log and sleep
 
-        print("\033[FRetry {}/{}. ".format(second, TIMEOUT))
+        print("\033[FRetry {}/{}.".format(second, TIMEOUT))
         sleep(1)
 
     # Timeout expired case
